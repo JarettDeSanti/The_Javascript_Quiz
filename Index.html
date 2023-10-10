@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Javascript Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body class="page-body">
+    <div class="topbar-main">
+        <div class="topbar">
+            <button id="scores">
+                View high scores
+            </button>
+            <p class="para1">
+                Time: 0
+            </p>
+        </div>
+
+        <main>
+            <div class="card" id="card-block">
+                <header>
+                    <h1 class="card-header1">
+                        Welcome to the Javascript Quiz
+                    </h1>
+                </header>
+                <p class="para2">
+                    Answer the questions before time runs out! Incorrect answers will affect your score and time by 10
+                    seconds!
+                </p>
+                <button id="start">
+                    Start Quiz
+                </button>
+            </div>
+
+            <section id="card-questions">
+                <p class="para3">
+                    A very useful tool used during development and debugging for printing content to the debugger is:
+                </p>
+                <ul class="list-items">
+                    <li><button class="button-li">1. Javascript</button></li>
+                    <li><button class="button-li">2. terminal/bash</button></li>
+                    <li><button class="button-li">3. for loops</button></li>
+                    <li><button class="button-li">4. console.log</button></li>
+                </ul>
+                <hr style="text-align: center; margin-left:14%; margin-right: 25%;">
+                <p id="correct"><em>Correct!</em></p>
+                <p id="wrong"><em>Wrong!</em></p>
+            </section>
+
+            <section id="quiz-complete">
+                <p id="title-done">
+                    All done!
+                </p> <br>
+                <div id="final-score">
+                    <p>
+                        Your final score is 0.
+                    </p> <br>
+                    <form>
+                        Enter initials: <input type="text"> <button class="button-li">Submit</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="high-scores">
+                <p id="title-done">
+                    High scores
+                </p>
+                <ol style="margin-left: 20%; font-size:25px;">
+                    <li>JD - 22</li>
+                    <li>JD - 22</li>
+                    <li>JD - 22</li>
+                    <li>JD - 22</li>
+                </ol> <br><br>
+                <button class="highscore-button">Go back</button>
+                <button class="highscore-button">Clear High Scores</button>
+            </section>
+
+        </main>
+    </div>
+</body>
+
+</html>
