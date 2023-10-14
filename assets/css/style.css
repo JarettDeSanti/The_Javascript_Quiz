@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-.para1 {
+#timer {
     float: right;
     font-size: 20px;
 }
@@ -31,10 +31,9 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10%;
-    margin-left: 14%;
-    margin-right: 14%;
+    margin-left: 25%;
+    margin-right: 25%;
     text-align: center;
-    display: none;
 }
 
 h1 {
@@ -48,46 +47,35 @@ h1 {
     margin-bottom: 7%;
 }
 
-#start {
+#start-button {
     background-color: #5e0587;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     border-width: 14px;
     border-color: #5e0587;
     border-radius: 20px;
-
+    padding: 5px 10px;
 }
 
 
-#start:hover {
+#start-button:hover {
     background-color: #aa5bcf;
     border-color: #aa5bcf;
     cursor: pointer;
 }
 
-#card-questions {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10%;
-    margin-left: 5%;
-    margin-right: 5%;
-    display: non;
+.card-questions {
+    margin-bottom: 6%;
+    font-size: 35px;
+    text-align: center;
 }
 
-.para3 {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3%;
-    font-size: 35px;
-    align-items: center;
-    margin-left: 14%;
-    margin-right: 14%;
-}
 
 .list-items {
-    margin-left: 18%;
-    margin-bottom: 6%;
+    margin-left: 25%;
+    margin-bottom: 2%;
     list-style-type: none;
+    font-size: 30px;
 }
 
 .button-li {
@@ -98,6 +86,8 @@ h1 {
     border-color: #5e0587;
     border-radius: 8px;
     margin-bottom: 1%;
+    width: 14rem;
+    text-align: left;
 }
 
 .button-li:hover {
@@ -106,13 +96,19 @@ h1 {
     cursor: pointer;
 }
 
-#correct,
-#wrong {
-    margin-left: 14%;
-    font-size: 25px;
+#question-feedback {
+    margin-left: 24%;
+    font-size: 40px;
+    font-style: italic;
+    border-top: 1px solid grey;
+    display: none;
+    margin-right: 24%;
 }
 
-#quiz-complete {
+hr,
+#quiz,
+#quiz-complete,
+#high-scores {
     display: none;
 }
 
@@ -131,6 +127,11 @@ h1 {
     font-size: 30px;
 }
 
+#enter-initials {
+    margin-left: 18%;
+    font-size: 25px;
+}
+
 .highscore-button {
     background-color: #5e0587;
     color: white;
@@ -141,6 +142,7 @@ h1 {
     display: flex;
     margin-left: 20%;
     margin-bottom: 1%;
+    width: 11rem;
 }
 
 .highscore-button:hover {
@@ -149,6 +151,20 @@ h1 {
     cursor: pointer;
 }
 
-#high-scores {
-    display: none;
+#highscores-list {
+    padding: 1%;
+    margin-bottom: 8%;
+}
+
+#submit-button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        margin-top: 14%;
+        font-size: 30px;;
+    }
 }
