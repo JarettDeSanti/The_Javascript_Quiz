@@ -223,7 +223,9 @@ submitButton.addEventListener("click", function () {
         var player = scores.find(({ name }) => name === initials);
         if (typeof (player) === 'undefined') {
             scores.push({ name: initials, score: score });
-        } else {
+        } 
+        // overrides player's old high score if the new high score is greater <---- * important*
+        else {
             scores.forEach(function (player) {
                 if (player.name == initials && player.score < score) {
                     player.score = score;
