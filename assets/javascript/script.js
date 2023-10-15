@@ -247,3 +247,9 @@ function endGame(timerMessage) {
     quizCompletePage.style.display = "block";
     finalScore.innerHTML = 'Your final score is ' + score + '.';
 }
+
+
+
+// *IMPORTANT*
+// If a player's new score is HIGHER than their previous high score, then the new score will take the place of their previous high score and any old high scores will be overwritten.
+// If a player's new score is LOWER than their previous high score, then the new score will be ignored and only their highest scored will be listed.
