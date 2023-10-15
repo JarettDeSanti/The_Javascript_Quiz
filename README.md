@@ -11,6 +11,9 @@ N/A
 ## Usage
 
 In order to use this website, the user must click the start button to begin the quiz. The user is then given a series of 5 questions which must be completed within the time frame. Ten seconds are deducted for each question wrong. At the end of the quiz, the user can submit their score and initials to be recorded in the "High Scores" section.  
+**IMPORTANT**
+If a player's new score is HIGHER than their previous high score, then the new score will take the place of their previous high score and any old high scores will be overwritten.
+If a player's new score is LOWER than their previous high score, then the new score will be ignored and only their highest scores will be listed.
 
 ## Links
 
