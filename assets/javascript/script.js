@@ -1,3 +1,4 @@
+// Questions for quiz
 var quizQuestions = [
     {
         question: "Which of the following is an example of a boolean?",
@@ -51,11 +52,8 @@ var quizQuestions = [
     },
 ];
 
-var scores = [];
-if(localStorage.getItem('scores')) {
-    scores = JSON.parse(localStorage.getItem('scores'));
-}
 
+// created variables to retrieve elements from HTML
 var startQuizButton = document.getElementById("start-button");
 var submitButton = document.getElementById("submit-button");
 var quizIntro = document.getElementById("intro");
@@ -67,24 +65,37 @@ var highScoresList = document.getElementById("high-scores-list");
 var clearHighscoreButton = document.getElementById('clear-highscore-button');
 var quizCompletePage = document.getElementById("quiz-complete");
 var timerSection = document.getElementById("timer");
-
-
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
 var answers = document.getElementById("answers");
 var questionFeedback = document.getElementById('question-feedback');
 var finalScore = document.getElementById('final-score');
-
 var initialsText = document.getElementById('initials-text');
 
-var timeLeft = 76;
-var staticTime = 0;
+// variable for subtracting 10 seconds from time
 var timeDeduction = 10;
+
+var timeLeft = 76;
+
+// empty variables to recall later
+var scores = [];
+var staticTime = 0;
 var score = 0;
+
+// created variable for game over
 var gameOver = false;
 
 
+
+// statement for getting scores using JSON.parse
+if (localStorage.getItem('scores')) {
+    scores = JSON.parse(localStorage.getItem('scores'));
+}
+
+
+
 var setIntervalFunction;
+// starts timer
 var generateTimer = function () {
     // Sets interval in variable
     setIntervalFunction = setInterval(function () {
@@ -98,34 +109,37 @@ var generateTimer = function () {
     }, 1000);
 }
 
-
+// adds "click" event listener for activating 'generateTimer' and 'quizstart' function
 startQuizButton.addEventListener("click", function () {
     generateTimer();
     quizStart();
 })
 
-
+// adds"click" event listener for activating 'showHighScores' function
 viewHighScores.addEventListener("click", function () {
     showHighScores();
 });
-
+// adds "click" event listener for activating 'clearHighScores' function
 clearHighscoreButton.addEventListener("click", function () {
     clearHighScores();
 });
 
-
+// function for starting quiz
 function quizStart() {
+    //sets the quiz intro page to display "none" and quiz page to display "block"
     quizIntro.style.display = "none";
     quiz.style.display = "block";
     nextQuestion(0);
 }
-
+// function for displaying the next question
 function nextQuestion(index) {
     question.innerHTML = quizQuestions[index].question;
     answers.innerHTML = '';
     questionFeedback.innerHTML = '';
     questionFeedback.style.display = "none";
 
+    // c_index is choice index
+    // added 'radio' style input buttons
     quizQuestions[index].choices.forEach(function (choice, c_index) {
         var input = document.createElement('input');
         input.id = 'answer-' + c_index;
@@ -133,11 +147,11 @@ function nextQuestion(index) {
         input.type = 'radio';
         input.classList.add('answer-input');
         input.value = choice;
-
+        // adds "change" event listener to activate function for displaying correct/wrong feedback
         input.addEventListener('change', function () {
             if (c_index == quizQuestions[index].answer) {
                 questionFeedback.innerHTML = 'correct';
-                //score++;
+
             } else {
                 questionFeedback.innerHTML = 'wrong';
                 timeLeft -= 10;
@@ -146,7 +160,7 @@ function nextQuestion(index) {
             document.querySelectorAll('.answer-input').forEach(function (answerInput) {
                 answerInput.disabled = 'true';
             });
-        
+
             questionFeedback.style.display = "block";
             if (index + 1 < quizQuestions.length) {
                 setTimeout(function () {
@@ -168,23 +182,22 @@ function nextQuestion(index) {
         answers.appendChild(br);
     });
 }
-
+// function for quiz complete and activating 'endGame' function
 function quizComplete() {
-    //score = (score * 10) * timeLeft;
     score = timeLeft;
     endGame('Time: 0');
     //timerSection.textContent = "Time: 0";
 }
-
-function showHighScores(){
+// function for displaying the high scores
+function showHighScores() {
     function compareScores(a, b) {
         return b.score - a.score;
     }
     scores.sort(compareScores);
-
+    // resets the high score list to empty
     highScoresList.innerHTML = '';
-
-    scores.forEach(function(player){
+    // function creates list items for the players names and scores
+    scores.forEach(function (player) {
         var li = document.createElement('li');
         li.innerHTML = player.name + ' - ' + player.score;
         highScoresList.append(li);
@@ -195,35 +208,35 @@ function showHighScores(){
     quiz.style.display = "none";
     viewHighScorePage.style.display = "block";
 }
-
-function clearHighScores(){
+// function for clearing the high scores/removing from local storage
+function clearHighScores() {
     localStorage.removeItem('scores');
     scores = [];
     showHighScores();
 }
-
+// creates window alert for required initials if none are given
 submitButton.addEventListener("click", function () {
     var initials = initialsText.value.trim();
-    if(initials == '') {
+    if (initials == '') {
         alert('Initials are required to save your score')
     } else {
         var player = scores.find(({ name }) => name === initials);
-        if(typeof(player) === 'undefined'){
+        if (typeof (player) === 'undefined') {
             scores.push({ name: initials, score: score });
         } else {
-            scores.forEach(function(player){
-                if(player.name == initials && player.score < score){
+            scores.forEach(function (player) {
+                if (player.name == initials && player.score < score) {
                     player.score = score;
                 }
             });
         }
-
+        // sets the scores using JSON.stringify method
         localStorage.setItem('scores', JSON.stringify(scores));
 
         showHighScores();
     }
 });
-
+// function for ending game
 function endGame(timerMessage) {
     // Stops execution of action at set interval
     clearInterval(setIntervalFunction);
